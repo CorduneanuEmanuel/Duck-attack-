@@ -17,6 +17,6 @@ Clasa Game se ocupa cu toata logica jocului. El creaza un std::vector<std::uniqu
 **Ce trebuie sa mai fac: Exceptii, terminat grafica pentru celelalte obiecte(codul va fi echivalent cu cel din Chicken::draw(), trebuie schimbat doar 2-3 parametrii) si ce se intampla daca un obiect loveste alt obiect +  adaugat comentarii.**
 
 **Bibliografie**
-
+https://en.cppreference.com/w/
 https://www.sfml-dev.org/
 https://www.learncpp.com/
