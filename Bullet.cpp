@@ -4,21 +4,30 @@
 
 Bullet::Bullet(const sf::Vector2f& coords) : Entity(coords)
 {
-	coords_Player();
+	m_rectangle = new sf::RectangleShape(sf::Vector2f{10.f, 50.f});
+    sf::FloatRect globalBounds = m_rectangle->getGlobalBounds();
+    m_xGlobalSize = globalBounds.size.x;
+    m_yGlobalSize = globalBounds.size.y;
+
 }
 
-sf::Vector2f Bullet::coords_Player() const
-{
-	Game& game = Game::instance();
-	
-	return { 5.0f, 1.0f };
-}
 
 void Bullet::draw(sf::RenderWindow* window) const
 {
-	std::cout << "mere";
+	m_rectangle->setPosition(this->m_coordonate);
+    //setarea un box in jurul imaginii pentru a vizualiza mai bine entitatea
+
+    m_rectangle->setFillColor(sf::Color::Red);
+    m_rectangle->setOutlineThickness(1.f);
+    m_rectangle->setOutlineColor(sf::Color::Black);
+	window->draw(*m_rectangle);
 }
-void Bullet::update()
+void Bullet::update(float& deltaTime)
 {
-	std::cout << "pere";
+	m_coordonate.y -= m_speed * deltaTime;
+
+}
+Bullet::~Bullet()
+{
+   
 }

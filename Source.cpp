@@ -4,13 +4,14 @@
 #include <vector>
 #include <memory>
 #include <string>
-
+#include <time.h>
 
 int main()
 {
+    srand(time(NULL));
     Game& game = Game::instance();
     game.run();
-
+    return 0;
     //sf::ContextSettings settings;
     //settings.antiAliasingLevel = 8;
     //std::cout << typeid({ 800, 600 });
@@ -64,4 +65,5 @@ int main()
 
 
         //sf::sleep(sf::seconds(3.0f));
+
 }
