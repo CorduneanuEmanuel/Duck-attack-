@@ -20,3 +20,5 @@ Clasa Game se ocupa cu toata logica jocului. El creaza un std::vector<std::uniqu
 https://en.cppreference.com/w/
 https://www.sfml-dev.org/
 https://www.learncpp.com/
+https://stackoverflow.com/questions/7560114/random-number-c-in-some-range
+https://discussions.unity.com/t/sinusoidal-movement-of-the-projectile/897760
