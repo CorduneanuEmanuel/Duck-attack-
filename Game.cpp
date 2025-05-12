@@ -1,29 +1,43 @@
 #include "Game.h"
+#include "Exceptions.h"
+
 
 void Game::createEntity(const EntityType& a, const sf::Vector2f& coords)
-{
-    switch (a)
-    {
-    case EntityType::PLAYER:
-        entities.push_back(std::make_unique<Player>(coords));
-        break;
-    case EntityType::CHICKEN:
-        entities.push_back(std::make_unique<Chicken>(coords));
-        break;
+{   
+    try {
+        switch (a)
+        {
+        case EntityType::PLAYER:
+            entities.push_back(std::make_unique<Player>(coords));
+            break;
+        case EntityType::CHICKEN:
+            entities.push_back(std::make_unique<Chicken>(coords));
+            break;
 
-    case EntityType::BULLET:
-        entities.push_back(std::make_unique<Bullet>(coords));
-        break;
+        case EntityType::BULLET:
+            entities.push_back(std::make_unique<Bullet>(coords));
+            break;
 
-    case EntityType::EGG:
-        entities.push_back(std::make_unique<Egg>(coords));
-        break;
+        case EntityType::EGG:
+            entities.push_back(std::make_unique<Egg>(coords));
+            break;
 
-    default:
-        throw 100;
-        std::cerr << "Tip de date necunoscut";
-        break;
+        default:
+            throw - 1;
+            std::cerr << "Tip de date necunoscut";
+            break;
+        }
     }
+	catch (const Memory& e)
+	{
+		std::cerr << e.what() << std::endl;
+        std::exit(1);
+	}
+	catch (const std::bad_alloc& e)
+	{
+		std::cerr << "Nu exista destula memorie" << std::endl;
+        std::exit(1);
+	}
 }
 
 Game::EntityType Game::getEntityType(const int& i)
@@ -42,6 +56,7 @@ Game::EntityType Game::getEntityType(const int& i)
 
 Game::Game()  
 {  
+	//initializare variabile joc
    sf::ContextSettings settings;  
    settings.antiAliasingLevel = 8;  
        sf::RenderWindow* window = new sf::RenderWindow(sf::VideoMode({ 1920, 1080 }), "Duck attack!", sf::Style::Close, sf::State::Windowed);
@@ -49,9 +64,12 @@ Game::Game()
        this->window = window;  
 
    //creaza player  
-
-   createEntity(EntityType::PLAYER, { 1920.0f/2-100.f, float(1080.0f*8/10)});
-   
+       try {
+           createEntity(EntityType::PLAYER, { 1920.0f / 2 - 100.f, float(1080.0f * 8 / 10) });
+       }
+       catch(std::bad_alloc){
+           std::cerr << "NU EXISTA DESTULA MEMORIE" << std::endl;
+       }
    Player* playerEntity = dynamic_cast<Player*>(entities.back().get());  
  
 
@@ -201,7 +219,7 @@ void Game::updateEgg(float& deltaTime)
 {
     for (const auto& entity : entities) {
         if (auto egg = dynamic_cast<Egg*>(entity.get())) {
-            
+
             egg->update(deltaTime);
 
         }

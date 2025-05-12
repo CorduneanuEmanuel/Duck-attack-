@@ -18,21 +18,30 @@ public:
 
 class FileException : public CustomException {
 public:
-    FileException(const std::string& message)
-        : CustomException("FileException: " + message) {}
+    FileException(const std::string& message) :
+	    CustomException("FileException: " + message) {}
 };
 
 //daca sunt prea multe entitati
-class MemoryManagment : public CustomException {
+/*class MemoryManagment : std::bad_alloc {
 public:
     MemoryManagment(const std::string& message)
-        : CustomException("MemoryManagment: " + message) {}
-};
+        : bad_alloc("MemoryManagment: " + message) {}
+}*/;
+
 
 class RenderException : public CustomException {
 public:
     RenderException(const std::string& message)
         : CustomException("RenderException: " + message) {}
 };
+
+class Memory: public std::bad_alloc {
+public:
+	const char* what() const override {
+		return "MemoryException: Nu-i destula memorie";
+	}
+};
+
 
 #endif

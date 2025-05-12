@@ -5,11 +5,15 @@
 class Bullet : public Entity  
 {  
 private:  
-    float m_speed = 800.f;
+    const float m_speed = 800.f;
     float m_xGlobalSize = 0, m_yGlobalSize = 0;
     
     
     sf::RectangleShape* m_rectangle = nullptr;
+    sf::Image* m_image = nullptr;
+	sf::Texture* m_texture = nullptr;
+	sf::Sprite* m_sprite = nullptr;
+
 
 public:  
    Bullet() = delete;  
