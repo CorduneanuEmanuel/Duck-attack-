@@ -86,6 +86,7 @@
     <ClCompile Include="Egg.cpp" />
     <ClCompile Include="Entity.cpp" />
     <ClCompile Include="Exceptions.cpp" />
+    <ClCompile Include="Factory_pattern.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Source.cpp" />
@@ -96,6 +97,7 @@
     <ClInclude Include="Egg.h" />
     <ClInclude Include="Entity.h" />
     <ClInclude Include="Exceptions.h" />
+    <ClInclude Include="Factory_pattern.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="Includes.h" />
     <ClInclude Include="Player.h" />

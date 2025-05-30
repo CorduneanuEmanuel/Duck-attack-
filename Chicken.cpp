@@ -1,5 +1,6 @@
 #include "Chicken.h"
 #include "Game.h"
+#include "Factory_pattern.h"
 #include <iostream>
 #include <random>
 #include <time.h>
@@ -85,7 +86,7 @@ void Chicken::update(float& deltaTime)
 
         float bigImage = getCoords().x + m_xGlobalSize / 2.f;
         float smallImage = copyEgg->getX_GlobalSize() / 2.f;
-        game.createEntity(game.getEntityType(3),
+        game.createEnt<Egg>(
             { bigImage - smallImage,10.f + getY_GlobalSize() + getCoords().y });
 
         delete copyEgg;

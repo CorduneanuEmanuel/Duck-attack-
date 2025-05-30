@@ -20,7 +20,7 @@ public:
     Egg(const sf::Vector2f& coords);
 	Egg(const Egg&) = delete;
     ~Egg();
-    std::unique_ptr<Entity> clone() const override { return std::make_unique<Egg>(sf::Vector2f{getCoords().x, getCoords().y}); }
+    //std::unique_ptr<Entity> clone() const override { return std::make_unique<Egg>(sf::Vector2f{getCoords().x, getCoords().y}); }
     void draw(sf::RenderWindow* window) const override;
     void update(float& deltaTime) override;
   

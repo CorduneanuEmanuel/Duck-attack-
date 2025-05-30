@@ -37,9 +37,9 @@ public:
     Chicken(const sf::Vector2f& coords);
 	Chicken(const Chicken&) = delete;
     ~Chicken();
-    std::unique_ptr<Entity> clone() const override {
+    /*std::unique_ptr<Entity> clone() const override {
         return std::make_unique<Chicken>(sf::Vector2f{ getCoords().x, getCoords().y });
-    }
+    }*/
     void draw(sf::RenderWindow* window) const override;
     void update(float& deltaTime) override;
     

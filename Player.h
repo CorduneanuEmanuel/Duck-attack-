@@ -24,9 +24,9 @@ public:
 
 	void draw(sf::RenderWindow* window) const override;
 	void update(float& deltaTime) override;
-	std::unique_ptr<Entity> clone() const override {
+	/*std::unique_ptr<Entity> clone() const override {
 		return std::make_unique<Player>(sf::Vector2f{ getCoords().x, getCoords().y });
-	}
+	}*/
 	float getX_GlobalSize() const { return m_xGlobalSize; }
 	float getY_GlobalSize() const { return m_yGlobalSize; }
 	void set_UP(float& deltaTime) { m_coordonate.y -= m_speed*deltaTime; }
